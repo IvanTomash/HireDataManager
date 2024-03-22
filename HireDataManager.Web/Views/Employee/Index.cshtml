@@ -1,0 +1,73 @@
+﻿@model IEnumerable<EmployeeDto>
+
+@{
+    ViewData["Title"] = "Index";
+
+    Pager pager = new Pager();
+
+    int pageNo = 0;
+    if (ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        pageNo = pager.CurrentPage;
+    }
+
+}
+
+<div class="text-center">
+    <div style="text-align-last:justify">
+        <h6 class="display-6 d-inline-block text-uppercase">Employee</h6>
+        <a asp-controller="Employee" asp-action="Create" asp-route-pageIndex="@pager.CurrentPage" class="btn btn-primary border d-inline-block text-uppercase">
+            Create employee
+        </a>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            @foreach (var emp in Model)
+            {
+                <div class="col-md-4 mb-4">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="/lib/images/empty_user.png" alt="..." />
+                    <div class="card-body">
+                        <h5>@emp.FirstName @emp.LastName</h5>
+                        <p>
+                            Email: @emp.Email
+                        </p>
+                        <p>
+                            Phone Number: @emp.PhoneNumber
+                        </p>
+                        <p>
+                            Hire Date: @emp.HireDate
+                        </p>
+                        <p>
+                            Job: @emp.Job!.JobTitle
+                        </p>
+                        <p>
+                            Salary: @emp.Salary.ToString("c")
+                        </p>
+                        <p>
+                            Manager: @(emp.Manager != null ? $"{emp.Manager.FirstName} {emp.Manager.LastName}" : "No")
+                        </p>
+                        <p>
+                            Department: @(emp.Department != null ? emp.Department.DepartmentName : "No")
+                        </p>
+                            <div class="d-flex justify-content-between" role="group">
+                                <a asp-controller="Employee" asp-action="Update" asp-route-id="@emp.EmployeeId" asp-route-pageIndex="@pager.CurrentPage" class="btn btn-primary mx-2">
+                                    <i class="bi bi-pencil-square"></i> Edit
+                                </a>
+                                <a asp-controller="Employee" asp-action="Delete" asp-route-id="@emp.EmployeeId" asp-route-pageIndex="@pager.CurrentPage" class="btn btn-danger mx-2">
+                                    <i class="bi bi-trash3"></i> Delete
+                                </a>
+                            </div>
+                    </div>
+                </div>
+                </div>
+            }
+        </div>        
+    </div>
+   
+    @if (pager.TotalPages > 1)
+    {
+        <partial name="_pagination" model="@pager" />
+    }
+</div> 

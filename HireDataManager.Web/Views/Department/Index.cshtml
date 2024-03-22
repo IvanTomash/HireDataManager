@@ -1,0 +1,70 @@
+﻿@model IEnumerable<DepartmentDto>
+
+@{
+    ViewData["Title"] = "Index";
+
+    Pager pager = new Pager();
+
+    int pageNo = 0;
+    if (ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        pageNo = pager.CurrentPage;
+    }
+
+}
+
+<div class="text-center">
+    <div style="text-align-last:justify">
+        <h6 class="display-6 d-inline-block text-uppercase">Department</h6>
+        <a asp-controller="Department" asp-action="Create" asp-route-pageIndex="@pager.CurrentPage" class="btn btn-primary border d-inline-block text-uppercase">
+            Create department
+        </a>
+    </div>
+    <table class="table table-secondary table-striped table-hover table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">
+                    Id
+                </th>
+                <th scope="col">
+                    Department Name
+                </th>
+                <th>
+                    Location
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var department in Model)
+            {
+                <tr>
+                    <td>
+                        @department.DepartmentId
+                    </td>
+                    <td>
+                        @department.DepartmentName
+                    </td>
+                    <td>
+                        @(department.Location != null ? $"{department.Location.StreetAddress}, {department.Location.City}" : "No")
+                    </td>
+                    <td>
+                        <div class="w-75" role="group">
+                            <a asp-controller="Department" asp-action="Update" asp-route-id="@department.DepartmentId" asp-route-pageIndex="@pager.CurrentPage" class="btn btn-primary mx-2">
+                                <i class="bi bi-pencil-square"></i> Edit
+                            </a>
+                            <a asp-controller="Department" asp-action="Delete" asp-route-id="@department.DepartmentId" asp-route-pageIndex="@pager.CurrentPage" class="btn btn-danger mx-2">
+                                <i class="bi bi-trash3"></i> Delete
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @if (pager.TotalPages > 1)
+    {
+        <partial name="_pagination" model="@pager" />
+    }
+</div>

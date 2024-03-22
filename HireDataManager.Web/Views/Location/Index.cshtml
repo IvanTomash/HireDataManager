@@ -1,0 +1,88 @@
+﻿@model IEnumerable<LocationDto>
+
+@{
+    ViewData["Title"] = "Index";
+
+    Pager pager = new Pager();
+
+    int pageNo = 0;
+    if (ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        pageNo = pager.CurrentPage;
+    }
+
+}
+
+<div class="text-center">
+    <div style="text-align-last:justify">
+        <h6 class="display-6 d-inline-block text-uppercase">Country</h6>
+        <a asp-controller="Location" asp-action="Create" asp-route-pageIndex="@pager.CurrentPage" class="btn btn-primary border d-inline-block text-uppercase">
+            Create location
+        </a>
+    </div>
+    <table class="table table-secondary table-striped table-hover table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">
+                    Id
+                </th>
+                <th scope="col">
+                    Street Address
+                </th>
+                <th>
+                    Postal Code
+                </th>
+                <th>
+                    City
+                </th>
+                <th>
+                    StateProvince
+                </th>
+                <th>
+                    Country
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var location in Model)
+            {
+                <tr>
+                    <td>
+                        @location.LocationId
+                    </td>
+                    <td>
+                        @location.StreetAddress
+                    </td>
+                    <td>
+                        @location.PostalCode
+                    </td>
+                    <td>
+                        @location.City
+                    </td>
+                    <td>
+                        @location.StateProvince
+                    </td>
+                    <td>
+                        @location.Country.CountryName
+                    </td>
+                    <td>
+                        <div class="w-75" role="group">
+                            <a asp-controller="Location" asp-action="Update" asp-route-id="@location.LocationId" asp-route-pageIndex="@pager.CurrentPage" class="btn btn-primary mx-2">
+                                <i class="bi bi-pencil-square"></i> Edit
+                            </a>
+                            <a asp-controller="Location" asp-action="Delete" asp-route-id="@location.LocationId" asp-route-pageIndex="@pager.CurrentPage" class="btn btn-danger mx-2">
+                                <i class="bi bi-trash3"></i> Delete
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @if (pager.TotalPages > 1)
+    {
+        <partial name="_pagination" model="@pager" />
+    }
+</div>

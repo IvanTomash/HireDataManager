@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34322.80
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HireDataManager.Web", "HireDataManager.Web\HireDataManager.Web.csproj", "{E400E403-F991-4FDC-86EF-FCE899F632C7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D31112A3-D505-4D08-B835-B2620218B47B} = {D31112A3-D505-4D08-B835-B2620218B47B}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DAL", "DAL", "{F95624C6-6FF6-4490-ACD6-6BFA1F8D0DB5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HireDataManager.DAL", "HireDataManager.DAL\HireDataManager.DAL.csproj", "{339C813C-9696-48FB-9979-F22ED91BB363}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models", "Models", "{C2FF4186-FB21-4B49-B3B4-ED0477EC9C41}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HireDataManager.Models", "HireDataManager.Models\HireDataManager.Models.csproj", "{D09356E5-B4CB-480E-B00C-9A04236A9807}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BLL", "BLL", "{53250D35-1817-4491-9F04-7B4C76AC4416}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HireDataManager.BLL", "HireDataManager.BLL\HireDataManager.BLL.csproj", "{D31112A3-D505-4D08-B835-B2620218B47B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E400E403-F991-4FDC-86EF-FCE899F632C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E400E403-F991-4FDC-86EF-FCE899F632C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E400E403-F991-4FDC-86EF-FCE899F632C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E400E403-F991-4FDC-86EF-FCE899F632C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{339C813C-9696-48FB-9979-F22ED91BB363}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{339C813C-9696-48FB-9979-F22ED91BB363}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{339C813C-9696-48FB-9979-F22ED91BB363}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{339C813C-9696-48FB-9979-F22ED91BB363}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D09356E5-B4CB-480E-B00C-9A04236A9807}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D09356E5-B4CB-480E-B00C-9A04236A9807}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D09356E5-B4CB-480E-B00C-9A04236A9807}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D09356E5-B4CB-480E-B00C-9A04236A9807}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D31112A3-D505-4D08-B835-B2620218B47B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D31112A3-D505-4D08-B835-B2620218B47B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D31112A3-D505-4D08-B835-B2620218B47B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D31112A3-D505-4D08-B835-B2620218B47B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{339C813C-9696-48FB-9979-F22ED91BB363} = {F95624C6-6FF6-4490-ACD6-6BFA1F8D0DB5}
+		{D09356E5-B4CB-480E-B00C-9A04236A9807} = {C2FF4186-FB21-4B49-B3B4-ED0477EC9C41}
+		{D31112A3-D505-4D08-B835-B2620218B47B} = {53250D35-1817-4491-9F04-7B4C76AC4416}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {73A69BCA-D2F1-41E4-AFAD-F0433A9F4C47}
+	EndGlobalSection
+EndGlobal
