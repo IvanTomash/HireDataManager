@@ -10,9 +10,14 @@
     </div>
 
     <div class="card-body p-4">
-        <form method="post" class="row">
+        <form method="post" class="row" enctype="multipart/form-data">
             <input asp-for="@Model.Employee.EmployeeId" hidden />
             <div class="border p-3">
+                <img class="card-img-top" src="@(Model.Employee.Photo != null ? Model.Employee.Photo : @"lib/images/empty_user.png" )" alt="..." style="min-height: 240px; max-height:240px;" />
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="@Model.PhotoFile" class="form-control border-0 shadow" />
+                    <label asp-for="@Model.PhotoFile" class="ms-2"></label>
+                </div>
                 <div class="form-floating py-2 col-12">
                     <input asp-for="@Model.Employee.FirstName" class="form-control border-0 shadow" />
                     <label asp-for="@Model.Employee.FirstName" class="ms-2"></label>

@@ -10,8 +10,12 @@
     </div>
 
     <div class="card-body p-4">
-        <form method="post" class="row">
+        <form method="post" class="row" enctype="multipart/form-data">
             <div class="border p-3">
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="@Model.PhotoFile" class="form-control border-0 shadow" />
+                    <label asp-for="@Model.PhotoFile" class="ms-2"></label>
+                </div>
                 <div class="form-floating py-2 col-12">
                     <input asp-for="@Model.Employee.FirstName" class="form-control border-0 shadow" />
                     <label asp-for="@Model.Employee.FirstName" class="ms-2"></label>
@@ -83,7 +87,7 @@
                         <button type="submit" class="btn btn-primary form-control">Create</button>
                     </div>
                     <div class="col-6 col-md-3">
-                        <a asp-controller="Dependent" asp-action="Index" asp-route-pg="@ViewBag.PageIndex" class="btn btn-outline-secondary border form-control">
+                        <a asp-controller="Employee" asp-action="Index" asp-route-pg="@ViewBag.PageIndex" class="btn btn-outline-secondary border form-control">
                             Back to List
                         </a>
                     </div>
@@ -91,7 +95,6 @@
 
             </div>
         </form>
-
     </div>
 </div>
 

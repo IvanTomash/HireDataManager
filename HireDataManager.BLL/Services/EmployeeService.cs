@@ -4,6 +4,7 @@ using HireDataManager.DAL.Repositories.Interfaces;
 using HireDataManager.Models;
 using HireDataManager.Models.Dto;
 using HireDataManager.Models.Entity;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,10 +29,10 @@ public class EmployeeService : IEmployeeService
         return _employeeRepository.GetTotalCount();
     }
 
-    public Task<int?> Create(EmployeeDto employee)
+    public async Task<int?> Create(EmployeeDto employee, IFormFile photo)
     {
         Employee newEmployee = _mapper.Map<Employee>(employee);
-        var result = _employeeRepository.Create(newEmployee);
+        var result = await _employeeRepository.Create(newEmployee, photo);
         return result;
     }
 
@@ -55,20 +56,41 @@ public class EmployeeService : IEmployeeService
 
     public async Task<EmployeeDto> GetById(int id)
     {
+        string separator = @"\wwwroot\";
         var result = _mapper.Map<EmployeeDto>(await _employeeRepository.GetById(id));
-        return result;
+        if (result != null)
+        {
+            string photo = _employeeRepository.GetPhoto(result.EmployeeId);
+            if (photo != null)
+            {
+                int index = photo.IndexOf(separator);
+                result.Photo = photo.Substring(index + separator.Length);
+
+            }
+        }
+        return result!;
     }
 
     public async Task<List<EmployeeDto>> GetPaginated(int page, int pageSize)
     {
+        string separator = @"\wwwroot\";
         var result = _mapper.Map<List<EmployeeDto>>(await _employeeRepository.GetPaginated(page, pageSize));
+        foreach (var employee in result)
+        {
+            string photo = _employeeRepository.GetPhoto(employee.EmployeeId);
+            if (photo != null)
+            {
+                int index = photo.IndexOf(separator);
+                employee.Photo = photo.Substring(index + separator.Length);
+            }
+        }
         return result;
     }
 
-    public Task<int?> Update(EmployeeDto employee)
+    public Task<int?> Update(EmployeeDto employee, IFormFile photo)
     {
         Employee updatedEmployee = _mapper.Map<Employee>(employee);
-        var result = _employeeRepository.Update(updatedEmployee);
+        var result = _employeeRepository.Update(updatedEmployee, photo);
         return result;
     }
 }

@@ -79,7 +79,7 @@ public class EmployeeController : Controller
     {
         if (ModelState.IsValid)
         {
-            var result = await _employeeService.Create(obj.Employee);
+            var result = await _employeeService.Create(obj.Employee, obj.PhotoFile);
             if (result != null)
             {
                 return RedirectToAction("Index", new { pg = pageIndex });
@@ -126,7 +126,7 @@ public class EmployeeController : Controller
     {
         if (ModelState.IsValid)
         {
-            var result = await _employeeService.Update(obj.Employee);
+            var result = await _employeeService.Update(obj.Employee, obj.PhotoFile);
             if (result != null)
             {
                 return RedirectToAction("Index", new { pg = pageIndex });

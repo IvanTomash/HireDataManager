@@ -59,4 +59,6 @@ public class EmployeeDto
 
     [ValidateNever]
     public virtual DepartmentDto? Department { get; set; }
+
+    public string? Photo { get; set; }
 }

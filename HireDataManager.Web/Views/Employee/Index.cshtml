@@ -27,7 +27,7 @@
             {
                 <div class="col-md-4 mb-4">
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="/lib/images/empty_user.png" alt="..." />
+                        <img class="card-img-top" src=@(emp.Photo != null ? emp.Photo : @"lib\images\empty_user.png" ) alt="..." style="min-height: 240px; max-height:240px;"/>
                     <div class="card-body">
                         <h5>@emp.FirstName @emp.LastName</h5>
                         <p>

@@ -1,4 +1,5 @@
 ﻿using HireDataManager.Models.Dto;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -12,6 +13,9 @@ namespace HireDataManager.Models.ViewModel;
 public class EmployeeViewModel
 {
     public EmployeeDto Employee { get; set; }
+
+    [ValidateNever]
+    public IFormFile PhotoFile { get; set; }
 
     [ValidateNever]
     public IEnumerable<SelectListItem> JobList { get; set; }
